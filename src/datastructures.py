@@ -21,11 +21,11 @@ class FamilyStructure:
     def add_member(self, member):
         get_id = self._generateId()
         try:
-            member_to_dict = {'id':member['id'],'first_name': member['first_name'], 
+            member_dict = {'id':get_id,'first_name': member['first_name'], 
                           'last_name': self.last_name,'age':member['age'],
                           'lucky_numbers': member['lucky_numbers']}
-            self._members.append(member_to_dict)
-            return self._members
+            self._members.append(member_dict)
+            return member_dict
         except:
             return None
 
