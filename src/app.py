@@ -67,10 +67,10 @@ def handle_add_member():
         request_body = request.get_json(force=True)
         response_body = jackson_family.add_member(request_body)
         if response_body is None:
-            return jsonify('Bad request: request is missing properties/values'), 400
+            return jsonify('Bad request: request is missing properties or includes invalid data types'), 400
         return jsonify(response_body), 200
     except BadRequest as e:
-        return jsonify('Bad request: request format/type is incorrect'), 400
+        return jsonify('Bad request: request is not JSON'), 400
     except Exception as e:
         return jsonify('Internal server error'), 500
 

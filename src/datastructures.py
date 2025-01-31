@@ -21,6 +21,11 @@ class FamilyStructure:
     def add_member(self, member):
         get_id = self._generateId()
         try:
+            if member['age'] < 0 or not isinstance(member['age'],int) or not isinstance(member['first_name'],str):
+                return None
+            lucky_list = self._check_lucky_list(member['lucky_numbers'])
+            if not lucky_list:
+                return None
             member_dict = {'id':get_id,'first_name': member['first_name'], 
                           'last_name': self.last_name,'age':member['age'],
                           'lucky_numbers': member['lucky_numbers']}
@@ -28,7 +33,11 @@ class FamilyStructure:
             return member_dict
         except:
             return None
-
+        
+    def _check_lucky_list(self,lucky_list):
+        if isinstance(lucky_list,list) and all(isinstance(elem,int) for elem in lucky_list):
+            return True
+        return False
 
     def delete_member(self, id):
         member = self.get_member(id)
