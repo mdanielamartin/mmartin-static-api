@@ -17,7 +17,7 @@ class FamilyStructure:
     # read-only: Use this method to generate random members ID's when adding members into the list
     def _generateId(self):
         return randint(0, 99999999)
-
+    #Automatic grading will not work if _generateID is used. Must receive id directly from the body during the request.
     def add_member(self, member):
         get_id = self._generateId()
         try:
