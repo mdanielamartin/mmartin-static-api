@@ -17,6 +17,7 @@ class FamilyStructure:
     def _generateId(self):
         return randint(0, 99999999)
     #Automatic grading will not work if _generateID is used. Must receive id directly from the body during the request.
+    #Updating to allow tests to run
     def add_member(self, member):
         get_id = self._generateId()
         try:
@@ -25,7 +26,7 @@ class FamilyStructure:
             lucky_list = self._check_lucky_list(member['lucky_numbers'])
             if not lucky_list:
                 return None
-            member_dict = {'id':get_id,'first_name': member['first_name'], 
+            member_dict = {'id':member['id'],'first_name': member['first_name'], 
                           'last_name': self.last_name,'age':member['age'],
                           'lucky_numbers': member['lucky_numbers']}
             self._members.append(member_dict)
